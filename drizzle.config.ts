@@ -5,6 +5,6 @@ export default {
   out: "./drizzle",
   dialect: "postgresql",
   dbCredentials: {
-    url: 'postgres://docker:docker@localhost:5432/api_bun_elysia'
+    url: "postgres://docker:docker@localhost:5432/api_bun_elysia",
   }
 } satisfies Config;
