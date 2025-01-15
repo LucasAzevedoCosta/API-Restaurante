@@ -4,14 +4,12 @@ import cookie from "@elysiajs/cookie";
 
 import { env } from "../env";
 
-export const auth = new Elysia()
- .use(
+export const auth = new Elysia().use(
   jwt({
-    secret:env.JWT_SECRET_KEY,
+    secret: env.JWT_SECRET_KEY,
     schema: t.Object({
       sub: t.String(),
-      restauranteId: t.Optional(t.String()),
-    })
-  })
- )
- .use(cookie())
+      restaurantId: t.Optional(t.String()),
+    }),
+  }),
+)
