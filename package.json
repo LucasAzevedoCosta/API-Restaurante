@@ -20,6 +20,7 @@
     "dayjs": "^1.11.13",
     "drizzle-orm": "^0.38.0",
     "elysia": "^1.1.26",
+    "nodemailer": "^6.9.16",
     "pg": "^8.13.1",
     "zod": "^3.24.1"
   },
@@ -27,6 +28,7 @@
     "@faker-js/faker": "^9.3.0",
     "@rocketseat/eslint-config": "^2.2.2",
     "@types/bun": "latest",
+    "@types/nodemailer": "^6.4.17",
     "@types/pg": "^8.11.10",
     "drizzle-kit": "^0.30.0",
     "eslint": "^9.18.0",

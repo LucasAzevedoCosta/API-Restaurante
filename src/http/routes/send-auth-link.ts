@@ -1,8 +1,10 @@
 import { Elysia, t } from "elysia";
+import nodemailer from "nodemailer";
 import { db } from "../../db/connection";
 import { authLinks } from "../../db/schema";
 import { createId } from "@paralleldrive/cuid2";
 import { env } from "../../env";
+import { mail } from "../../lib/mail";
 
 export const sendAuthLink = new Elysia().post('/authenticate', async ({ body }) => {
     const { email } = body
@@ -26,15 +28,23 @@ export const sendAuthLink = new Elysia().post('/authenticate', async ({ body }) 
     })
 
 
-    //enviar um email para o usuário
-
-
     const authLink = new URL('/auth-links/authenticate', env.API_BASE_URL)
 
     authLink.searchParams.set('code', authLinkCode)
     authLink.searchParams.set('redirect', env.AUTH_REDIRECT_URL)
 
-    console.log(authLink.toString())
+
+    const info = await mail.sendMail({
+        from: {
+          name: "Lucas's restaurant",
+          address: "hi@Lucas'srestaurant.com",
+        },
+        to: email,
+        subject: "Authenticação por Lucas's restaurant",
+        text: `Use o link abaixo para autenticar sua conta no Lucas's restaurant: ${authLink.toString()}`,
+      })
+      console.log(nodemailer.getTestMessageUrl(info))
+
 }, 
 {
     body: t.Object({
