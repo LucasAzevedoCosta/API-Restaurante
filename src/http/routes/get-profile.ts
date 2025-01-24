@@ -4,19 +4,19 @@ import { db } from "../../db/connection";
 import { UnauthorizedError } from "../errors/unauthorized-error";
 
 export const getProfile = new Elysia()
-.use(auth)
-.get('/me', async ({ getCurrentUser }) => {
-    const { userId } = await getCurrentUser()
+  .use(auth)
+  .get('/me', async ({ getCurrentUser }) => {
+    const { userId, restauranteId } = await getCurrentUser()
 
     const user = await db.query.users.findFirst({
-        where(fields, { eq }) {
-            return eq(fields.id, userId)
-          },
+      where(fields, { eq }) {
+        return eq(fields.id, userId)
+      },
     })
 
     if (!user) {
-        throw new UnauthorizedError
-      }
+      throw new UnauthorizedError()
+    }
 
     return user
-})
+  })
