@@ -1,7 +1,7 @@
-import Elysia, { t }  from "elysia"
-import { auth } from "../auth"
-import { UnauthorizedError } from "../errors/unauthorized-error"
-import { db } from "../../db/connection"
+import Elysia, { t }  from "elysia";
+import { auth } from "../auth";
+import { UnauthorizedError } from "../errors/unauthorized-error";
+import { db } from "../../db/connection";
 
 export const getOrderDetails = new Elysia().use(auth).get(
     '/orders/:orderId',

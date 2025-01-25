@@ -1,6 +1,5 @@
 import  { Elysia, t, type Static } from "elysia";
 import jwt from "@elysiajs/jwt";
-import cookie from "@elysiajs/cookie";
 
 import { env } from "../env";
 import { UnauthorizedError } from "./errors/unauthorized-error";

@@ -1,9 +1,9 @@
-import Elysia, { t } from "elysia"
-import { auth } from "../auth"
-import { UnauthorizedError } from "../errors/unauthorized-error"
-import { db } from "../../db/connection"
-import { orders } from "../../db/schema"
-import { eq } from "drizzle-orm"
+import Elysia, { t } from "elysia";
+import { auth } from "../auth";
+import { UnauthorizedError } from "../errors/unauthorized-error";
+import { db } from "../../db/connection";
+import { orders } from "../../db/schema";
+import { eq } from "drizzle-orm";
 
 export const dispatchOrder = new Elysia().use(auth).patch(
     '/orders/:orderId/dispatch',
