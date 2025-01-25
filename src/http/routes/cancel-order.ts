@@ -1,34 +1,39 @@
-import Elysia, { t } from "elysia"
-import { UnauthorizedError } from "../errors/unauthorized-error"
-import { auth } from "../auth"
-import { db } from "../../db/connection"
-import { orders } from "../../db/schema"
 import { eq } from "drizzle-orm"
+import { db } from "../../db/connection"
+import { auth } from "../auth"
+import { UnauthorizedError } from "../errors/unauthorized-error"
+import { orders } from "../../db/schema"
+import Elysia, { t } from "elysia"
 
-export const approveOrder = new Elysia().use(auth).patch(
-    '/orders/:orderId/approve',
+export const cancelOrder = new Elysia().use(auth).patch(
+    '/orders/:orderId/cancel',
     async ({ getCurrentUser, set, params }) => {
       const { orderId } = params
       const { restauranteId } = await getCurrentUser()
+
       if (!restauranteId) {
         throw new UnauthorizedError()
       }
+
       const order = await db.query.orders.findFirst({
         where(fields, { eq }) {
           return eq(fields.id, orderId)
         },
       })
+
       if (!order) {
         set.status = 400
-        return { message: 'pedido não encontrados.' }
+        return { message: 'Pedido não encontrado.' }
       }
-      if (order.status !== 'pending') {
+
+      if (!['pending', 'processing'].includes(order.status)) {
         set.status = 400
-        return { message: 'Você só pode aprovar pedidos pendentes.' }
+        return { message: 'Voce pode cancelar pedidos que já foram enviados.' }
       }
+
       await db
         .update(orders)
-        .set({ status: 'processing' })
+        .set({ status: 'canceled' })
         .where(eq(orders.id, orderId))
     },
     {

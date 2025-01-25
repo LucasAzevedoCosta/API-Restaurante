@@ -50,7 +50,7 @@ export const getOrderDetails = new Elysia().use(auth).get(
 
       if (!order) {
         set.status = 400
-        return { message: 'Order not found.' }
+        return { message: 'Pedido não encontrado.' }
       }
 
       return order
