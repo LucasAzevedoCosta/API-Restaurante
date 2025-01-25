@@ -36,6 +36,9 @@ const app = new Elysia()
 
         return error.toResponse()
       }
+      case 'NOT_FOUND': {
+        return new Response(null, { status: 404 })
+      }
 
       default: {
         console.error(error)
