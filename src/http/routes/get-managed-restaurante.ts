@@ -1,6 +1,6 @@
-import Elysia from 'elysia'
-import { auth } from '../auth'
-import { db } from '../../db/connection'
+import Elysia from "elysia";
+import { auth } from "../auth";
+import { db } from "../../db/connection";
 
 
 export const getManagedRestaurante = new Elysia()

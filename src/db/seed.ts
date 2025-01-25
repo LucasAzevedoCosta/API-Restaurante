@@ -1,8 +1,8 @@
-import { faker } from '@faker-js/faker'
-import { authLinks, orderItems, orders, products, restaurants, users } from "./schema"
-import { db } from "./connection"
-import chalk from "chalk"
-import { createId } from '@paralleldrive/cuid2'
+import { faker } from "@faker-js/faker";
+import { authLinks, orderItems, orders, products, restaurants, users } from "./schema";
+import { db } from "./connection";
+import chalk from "chalk";
+import { createId } from "@paralleldrive/cuid2";
 
 /**
  * Reset database
