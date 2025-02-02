@@ -82,3 +82,7 @@ Contribuições são sempre bem-vindas! Para contribuir, siga os seguintes passo
 3. Commit suas alterações (`git commit -m 'Adicionando nova funcionalidade'`)
 4. Envie suas alterações para o repositório remoto (`git push origin minha-feature`)
 5. Abra um Pull Request
+
+## 📝 Licença
+
+Este projeto está licenciado sob a [Licença MIT](LICENSE).
