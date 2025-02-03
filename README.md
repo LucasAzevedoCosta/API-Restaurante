@@ -4,7 +4,7 @@ Bem-vindo à API de Gerenciamento de Restaurante, uma solução completa para o 
 
 ## 🚀 Tecnologias Utilizadas
 
-- **Node.js com TypeScript** – Back-end robusto e tipado
+- **Bun com TypeScript** – Back-end robusto e tipado
 - **Bun** – Gerenciamento eficiente de pacotes e execução
 - **Drizzle ORM** – Mapeamento e migração de banco de dados
 - **Docker** – Contêineres para facilitar o ambiente de desenvolvimento
@@ -82,7 +82,3 @@ Contribuições são sempre bem-vindas! Para contribuir, siga os seguintes passo
 3. Commit suas alterações (`git commit -m 'Adicionando nova funcionalidade'`)
 4. Envie suas alterações para o repositório remoto (`git push origin minha-feature`)
 5. Abra um Pull Request
-
-## 📝 Licença
-
-Este projeto está licenciado sob a [Licença MIT](LICENSE).
