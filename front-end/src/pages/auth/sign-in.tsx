@@ -1,3 +1,10 @@
+import { SuperSEO } from "react-super-seo";
+
 export function SignIn() {
-    return <h1>SignIn</h1>
-  }
+  return (
+    <>
+      <SuperSEO title="Login" description="Hi!" />
+      <h1>SignIn</h1>
+    </>
+  );
+}
