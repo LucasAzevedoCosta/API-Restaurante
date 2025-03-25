@@ -1,10 +1,10 @@
-import { SuperSEO } from "react-super-seo";
+import { Helmet } from "react-helmet";
 
 export function SignIn() {
   return (
     <>
-      <SuperSEO title="Login" description="Hi!" />
-      <h1>SignIn</h1>
-    </>
+       <Helmet title="Login" />
+       <h1>SignIn</h1>
+     </>
   );
 }

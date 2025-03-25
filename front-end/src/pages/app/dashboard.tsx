@@ -1,9 +1,9 @@
-import { SuperSEO } from "react-super-seo";
+import { Helmet } from "react-helmet";
 
 export function Dashboard() {
   return (
     <>
-      <SuperSEO title="Dashboard" description="Hi!" />
+      <Helmet title="Dashboard" />
       <h1>Dashboard</h1>
     </>
   );
