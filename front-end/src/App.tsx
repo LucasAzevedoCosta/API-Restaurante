@@ -1,15 +1,20 @@
-import { RouterProvider } from 'react-router-dom'
-import { Helmet } from 'react-helmet'
-import { Toaster } from 'sonner'
- 
-import { router } from './routes'
+import { RouterProvider } from "react-router-dom";
+import { Helmet } from "react-helmet";
+import { Toaster } from "sonner";
+
+import { router } from "./routes";
+import { ThemeProvider } from "./components/theme/theme-provider";
 
 export function App() {
-  return <>
-  <Helmet titleTemplate="%s | Lucas Food" />
+  return (
+    <>
+      <ThemeProvider defaultTheme="system" storageKey="LucasFood-theme">
+        <Helmet titleTemplate="%s | Lucas Food" />
 
-  <Toaster richColors />
+        <Toaster richColors />
 
-  <RouterProvider router={router} />
-  </>
+        <RouterProvider router={router} />
+      </ThemeProvider>
+    </>
+  );
 }
