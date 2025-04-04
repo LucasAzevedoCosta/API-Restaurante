@@ -9,7 +9,7 @@ const data = [
   { product: "Mussarela", amount: 30 },
   { product: "Marguerita", amount: 50 },
   { product: "4 Queijos", amount: 16 },
-  { product: "Frango frito", amount: 26 },
+  { product: "Frango", amount: 26 },
 ];
 
 const COLORS = [
