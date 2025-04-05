@@ -1,5 +1,5 @@
 import { Elysia } from "elysia";
-
+import { cors } from "@elysiajs/cors";
 
 import { registerRestaurant } from "./routes/register-restaurant";
 import { sendAuthLink } from "./routes/send-auth-link";
@@ -20,9 +20,23 @@ import { getMonthCanceledOrdersAmount } from "./routes/get-month-canceled-orders
 import { getPopularProducts } from "./routes/get-popular-products";
 import { getDailyReceiptInPeriod } from "./routes/get-daily-receipt-in-period";
 
-
-
 const app = new Elysia()
+  .use(
+    cors({
+      credentials: true,
+      allowedHeaders: ["content-type"],
+      methods: ["GET", "POST", "PUT", "DELETE", "PATCH", "HEAD", "OPTIONS"],
+      origin: (request): boolean => {
+        const origin = request.headers.get("origin");
+
+        if (!origin) {
+          return false;
+        }
+
+        return true;
+      },
+    })
+  )
   .use(registerRestaurant)
   .use(sendAuthLink)
   .use(authenticateFromLink)
@@ -43,23 +57,23 @@ const app = new Elysia()
   .use(getDailyReceiptInPeriod)
   .onError(({ code, error, set }) => {
     switch (code) {
-      case 'VALIDATION': {
-        set.status = error.status
+      case "VALIDATION": {
+        set.status = error.status;
 
-        return error.toResponse()
+        return error.toResponse();
       }
-      case 'NOT_FOUND': {
-        return new Response(null, { status: 404 })
+      case "NOT_FOUND": {
+        return new Response(null, { status: 404 });
       }
 
       default: {
-        console.error(error)
-        
-        return new Response(null, { status: 500 })
+        console.error(error);
+
+        return new Response(null, { status: 500 });
       }
     }
-  })
+  });
 
 app.listen(3333, () => {
-    console.log("HTTP está rodando")
-})
+  console.log("HTTP está rodando");
+});
