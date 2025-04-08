@@ -1,11 +1,11 @@
 import Elysia, { t } from "elysia";
 import { db } from "../../db/connection";
 import dayjs from "dayjs";
-import { auth } from "../auth";
 import { authLinks } from "../../db/schema";
 import { eq } from "drizzle-orm";
+import { authentication } from "../authentication";
 
-export const authenticateFromLink = new Elysia().use(auth).get(
+export const authenticateFromLink = new Elysia().use(authentication).get(
   "/auth-links/authenticate",
   async ({ query, signUser, set }) => {
     const { code, redirect } = query;

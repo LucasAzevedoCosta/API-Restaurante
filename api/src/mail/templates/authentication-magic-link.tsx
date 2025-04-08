@@ -32,7 +32,7 @@ export function AuthenticationMagicLinkTemplate({
         <Body className="bg-white my-auto mx-auto font-sans">
           <Container className="border border-solid border-[#eaeaea] rounded my-[40px] mx-auto p-[20px] w-[465px]">
             <Section className="mt-[32px] text-center">
-              <span className="text-2xl">🍴🥢🍽️</span>
+              <span className="text-2xl">🥢</span>
             </Section>
             <Heading className="text-black text-[24px] font-normal text-center p-0 my-[30px] mx-0">
               Faça login na Lucas Food
