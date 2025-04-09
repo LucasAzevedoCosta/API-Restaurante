@@ -3,9 +3,9 @@ import { db } from "../../db/connection";
 import dayjs from "dayjs";
 import { authLinks } from "../../db/schema";
 import { eq } from "drizzle-orm";
-import { authentication } from "../authentication";
+import { auth } from "../auth";
 
-export const authenticateFromLink = new Elysia().use(authentication).get(
+export const authenticateFromLink = new Elysia().use(auth).get(
   "/auth-links/authenticate",
   async ({ query, signUser, set }) => {
     const { code, redirect } = query;
@@ -42,7 +42,7 @@ export const authenticateFromLink = new Elysia().use(authentication).get(
 
     await db.delete(authLinks).where(eq(authLinks.code, code));
 
-    //set.redirect = redirect;
+    set.redirect = redirect;
   },
   {
     query: t.Object({
